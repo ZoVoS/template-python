@@ -53,7 +53,8 @@ def regex_generator():
     phrase = request.args.get('text')
     if phrase:
         regex_output = generate_regex_pattern(phrase)
-        return jsonify({'regex': regex_output})
+        # return jsonify({'regex': regex_output})
+        return regex_output.replace('\\\\', '\\')
     else:
         # If no phrase is provided, return an error or instructions
         return "Please provide a phrase using the 'text' query parameter. Example: /tim?text=this product is green"
